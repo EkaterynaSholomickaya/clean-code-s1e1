@@ -8,13 +8,14 @@
 // Event handling, user interaction is what starts the code execution.
 
 var taskInput = document.getElementById('new-task'); //Add a new task.
-var addButton = document.getElementsByTagName('button')[0]; //first button
+var addButton = document.querySelectorAll('.form__btn')[0]; //first button
 var incompleteTaskHolder = document.getElementById('incomplete-tasks'); //ul of #incompleteTasks
 var completedTasksHolder = document.getElementById('completed-tasks'); //completed-tasks
 
 //New task list item
 var createNewTaskElement = function (taskString) {
   var listItem = document.createElement('li');
+  listItem.classList.add('form__list-item');
 
   //input (checkbox)
   var checkBox = document.createElement('input'); //checkbx
@@ -39,8 +40,11 @@ var createNewTaskElement = function (taskString) {
 
   editButton.innerText = 'Edit'; //innerText encodes special characters, HTML does not.
   editButton.className = 'edit';
+  editButton.classList.add('form__btn');
 
   deleteButton.className = 'delete';
+  deleteButton.classList.add('form__btn');
+
   deleteButtonImg.src = './remove.svg';
   deleteButton.appendChild(deleteButtonImg);
 
@@ -99,6 +103,7 @@ var deleteTask = function () {
 
   var listItem = this.parentNode;
   var ul = listItem.parentNode;
+
   //Remove the parent list item from the ul.
   ul.removeChild(listItem);
 };
@@ -110,6 +115,10 @@ var taskCompleted = function () {
   //Append the task list item to the #completed-tasks
   var listItem = this.parentNode;
   completedTasksHolder.appendChild(listItem);
+
+  var labelListComplited = listItem.querySelector('.task');
+  labelListComplited.classList.add('form__label-completed');
+
   bindTaskEvents(listItem, taskIncomplete);
 };
 
@@ -119,6 +128,9 @@ var taskIncomplete = function () {
   //When the checkbox is unchecked
   //Append the task list item to the #incompleteTasks.
   var listItem = this.parentNode;
+  console.log(listItem);
+  var labelListComplited = listItem.querySelector('.task');
+  labelListComplited.classList.remove('form__label-completed');
   incompleteTaskHolder.appendChild(listItem);
   bindTaskEvents(listItem, taskCompleted);
 };
