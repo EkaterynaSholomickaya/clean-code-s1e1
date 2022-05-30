@@ -18,11 +18,9 @@
 }
 
 @media (max-width: 768px) {
-
   .logo {
     text-align: center;
   }
-
 }
 .form {
   display: block;
@@ -135,7 +133,7 @@ input#new-task {
 /* Completed */
 
 .form__label-completed {
-  text-decoration: line-through
+  text-decoration: line-through;
   color: #888;
 }
 /* Edit Task */
