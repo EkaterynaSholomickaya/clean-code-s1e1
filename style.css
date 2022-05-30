@@ -22,7 +22,7 @@
   .logo {
     text-align: center;
   }
-  
+
 }
 .form {
   display: block;
@@ -136,7 +136,7 @@ input#new-task {
 
 .form__label-completed {
   text-decoration: line-through
-  color:#888;
+  color: #888;
 }
 /* Edit Task */
 .form__list-item input[type='text'] {
